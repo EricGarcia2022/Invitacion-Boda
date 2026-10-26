@@ -7,7 +7,7 @@ const CONFIG = {
     { n: 'Ceremonia y Recepción', d: 'Finca Santo Angel, Arauca.', h: '4:00 PM' }
   ],
   mapa: 'https://www.google.com/maps/place/7%C2%B004 31.7%22N+70%C2%B042 22.8%22W/@7.0754665,-70.708916,719m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d7.0754665!4d-70.7063411?hl=es&entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D',
-  dress: 'Formal. Te pedimos evitar el color blanco, reservado para la novia.',
+  dress: 'Formal. Te pedimos evitar el color blanco, reservado para la novia y el color Beige, reservado para el novio.',
   itinerario: [  // [hora, actividad, icono]  (si no hay hora, déjala vacía)
     ['4:00 PM', 'Ceremonia', 'iglesia'], ['6:00 PM', 'Fotos', 'camara'], ['7:00 PM', 'Recepción', 'copas'],
     ['', 'Felicitaciones', 'corazon'], ['', 'Brindis', 'brindis'], ['', 'Baile vals', 'anillos'],
