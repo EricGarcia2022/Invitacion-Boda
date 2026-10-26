@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Invitación de boda · Deinner Niño & Lehidy Barco </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Dibujos reutilizables (flores en blanco, beige y dorado) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- borde rasgado de la foto -->
+  <filter id="rasgadoFoto" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="5" seed="7" result="n"/>
+    <feDisplacementMap in="SourceAlpha" in2="n" scale="30" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feComposite in="SourceGraphic" in2="d" operator="in"/>
+  </filter>
+  <!-- borde rasgado del papel blanco que se asoma detrás -->
+  <filter id="rasgadoPapel" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="5" seed="21" result="n"/>
+    <feDisplacementMap in="SourceAlpha" in2="n" scale="40" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feComposite in="SourceGraphic" in2="d" operator="in"/>
+  </filter>
+</svg>
+    <!-- ============ DEGRADADOS ============ -->
+<!-- Pétalo marfil: base más sombreada, punta luminosa -->
+<linearGradient id="gPetMarfil" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="-62">
+  <stop offset="0"   stop-color="#d9c29a"/>
+  <stop offset=".25" stop-color="#eddfc3"/>
+  <stop offset=".65" stop-color="#fbf5e8"/>
+  <stop offset="1"   stop-color="#fffdf8"/>
+</linearGradient>
+<!-- Pétalo beige/champaña -->
+<linearGradient id="gPetBeige" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="-62">
+  <stop offset="0"   stop-color="#b99a66"/>
+  <stop offset=".3"  stop-color="#dcc5a0"/>
+  <stop offset=".7"  stop-color="#f0e1c6"/>
+  <stop offset="1"   stop-color="#faf1de"/>
+</linearGradient>
+<!-- Brillo suave en el pétalo -->
+<radialGradient id="gBrillo" cx="50%" cy="25%" r="50%">
+  <stop offset="0" stop-color="#fff" stop-opacity=".75"/>
+  <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+</radialGradient>
+<!-- Centro dorado -->
+<radialGradient id="centroFlor" cx="38%" cy="32%" r="75%">
+  <stop offset="0"   stop-color="#f6df9a"/>
+  <stop offset=".55" stop-color="#c49a4b"/>
+  <stop offset="1"   stop-color="#7d5a22"/>
+</radialGradient>
+<radialGradient id="gCorazon" cx="50%" cy="50%" r="60%">
+  <stop offset="0"   stop-color="#d4b685"/>
+  <stop offset="1"   stop-color="#f3e6cc"/>
+</radialGradient>
+<!-- Hoja: dos tonos, lado claro y lado oscuro -->
+<linearGradient id="gHojaA" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0"   stop-color="#9fb08a"/>
+  <stop offset=".5"  stop-color="#7c926c"/>
+  <stop offset=".5"  stop-color="#657e58"/>
+  <stop offset="1"   stop-color="#4a6342"/>
+</linearGradient>
+<linearGradient id="gHojaB" x1="0" y1="1" x2="0" y2="0">
+  <stop offset="0"   stop-color="#2f4a2b" stop-opacity=".45"/>
+  <stop offset=".6"  stop-color="#2f4a2b" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="gBaya" cx="35%" cy="30%" r="70%">
+  <stop offset="0"   stop-color="#fffaf0"/>
+  <stop offset="1"   stop-color="#d8c6a2"/>
+</radialGradient>
+ 
+<!-- ============ FILTROS ============ -->
+<!-- Bordes ligeramente irregulares, como pétalo real -->
+<filter id="fOrganico" x="-10%" y="-10%" width="120%" height="120%">
+  <feTurbulence type="fractalNoise" baseFrequency=".07" numOctaves="2" seed="4" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+<!-- Sombra suave entre capas de pétalos (da volumen) -->
+<filter id="fSombraCapa" x="-20%" y="-20%" width="140%" height="140%">
+  <feDropShadow dx="0" dy="1.6" stdDeviation="1.9" flood-color="#5a4524" flood-opacity=".38"/>
+</filter>
+<!-- Grano fino tipo tela/pétalo -->
+<filter id="fGrano" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="9" result="g"/>
+  <feColorMatrix in="g" type="matrix" values="0 0 0 0 .45  0 0 0 0 .36  0 0 0 0 .2  0 0 0 .16 0" result="gc"/>
+  <feComposite in="gc" in2="SourceGraphic" operator="in" result="gin"/>
+  <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="gin"/></feMerge>
+</filter>
+ 
+<!-- ============ PÉTALOS (base reutilizable, apunta hacia arriba) ============ -->
+<g id="petMarfil">
+  <path d="M0 0 C-24 -6 -33 -36 -16 -55 C-9 -62 -4 -58 0 -62 C4 -58 9 -62 16 -55 C33 -36 24 -6 0 0Z"
+        fill="url(#gPetMarfil)" stroke="#bfa779" stroke-width=".6" stroke-opacity=".55"/>
+  <path d="M0 -4 C0 -20 0 -36 0 -52 M-3 -10 C-12 -24 -14 -38 -10 -48 M3 -10 C12 -24 14 -38 10 -48"
+        fill="none" stroke="#a58a5a" stroke-width=".55" stroke-opacity=".28" stroke-linecap="round"/>
+  <ellipse cx="0" cy="-44" rx="13" ry="12" fill="url(#gBrillo)"/>
+</g>
+<g id="petBeige">
+  <path d="M0 0 C-26 -6 -34 -34 -18 -54 C-10 -63 -5 -57 0 -61 C5 -57 10 -63 18 -54 C34 -34 26 -6 0 0Z"
+        fill="url(#gPetBeige)" stroke="#a88a58" stroke-width=".6" stroke-opacity=".5"/>
+  <path d="M0 -4 C0 -20 0 -36 0 -52 M-3 -10 C-13 -24 -15 -38 -11 -48 M3 -10 C13 -24 15 -38 11 -48"
+        fill="none" stroke="#8c7144" stroke-width=".55" stroke-opacity=".28" stroke-linecap="round"/>
+  <ellipse cx="0" cy="-44" rx="14" ry="12" fill="url(#gBrillo)" opacity=".8"/>
+</g>
+ 
+<!-- ============ FLOR 1: marfil, abierta, con estambres dorados ============ -->
+<symbol id="flor" viewBox="-50 -50 100 100">
+  <g filter="url(#fGrano)">
+    <g filter="url(#fOrganico)">
+      <!-- anillo exterior -->
+      <g filter="url(#fSombraCapa)">
+        <use href="#petMarfil" transform="rotate(0)   scale(.78)"/>
+        <use href="#petMarfil" transform="rotate(40)  scale(.8)"/>
+        <use href="#petMarfil" transform="rotate(80)  scale(.77)"/>
+        <use href="#petMarfil" transform="rotate(120) scale(.8)"/>
+        <use href="#petMarfil" transform="rotate(160) scale(.78)"/>
+        <use href="#petMarfil" transform="rotate(200) scale(.8)"/>
+        <use href="#petMarfil" transform="rotate(240) scale(.77)"/>
+        <use href="#petMarfil" transform="rotate(280) scale(.8)"/>
+        <use href="#petMarfil" transform="rotate(320) scale(.78)"/>
+      </g>
+      <!-- anillo medio -->
+      <g filter="url(#fSombraCapa)">
+        <use href="#petMarfil" transform="rotate(20)  scale(.6)"/>
+        <use href="#petMarfil" transform="rotate(71)  scale(.62)"/>
+        <use href="#petMarfil" transform="rotate(122) scale(.6)"/>
+        <use href="#petMarfil" transform="rotate(173) scale(.62)"/>
+        <use href="#petMarfil" transform="rotate(224) scale(.6)"/>
+        <use href="#petMarfil" transform="rotate(275) scale(.62)"/>
+        <use href="#petMarfil" transform="rotate(326) scale(.6)"/>
+      </g>
+      <!-- anillo interior -->
+      <g filter="url(#fSombraCapa)">
+        <use href="#petMarfil" transform="rotate(10)  scale(.4)"/>
+        <use href="#petMarfil" transform="rotate(82)  scale(.42)"/>
+        <use href="#petMarfil" transform="rotate(154) scale(.4)"/>
+        <use href="#petMarfil" transform="rotate(226) scale(.42)"/>
+        <use href="#petMarfil" transform="rotate(298) scale(.4)"/>
+      </g>
+    </g>
+    <!-- sombra del corazón y estambres -->
+    <circle r="9" fill="#8a6b35" opacity=".28" filter="url(#fSombraCapa)"/>
+    <circle r="7.2" fill="url(#centroFlor)"/>
+    <g fill="#e8c978" stroke="#9b7433" stroke-width=".25">
+      <circle cx="0"    cy="-6.2" r="1.15"/><circle cx="4.4"  cy="-4.4" r="1.1"/>
+      <circle cx="6.2"  cy="0"    r="1.15"/><circle cx="4.4"  cy="4.4"  r="1.05"/>
+      <circle cx="0"    cy="6.2"  r="1.15"/><circle cx="-4.4" cy="4.4"  r="1.1"/>
+      <circle cx="-6.2" cy="0"    r="1.05"/><circle cx="-4.4" cy="-4.4" r="1.15"/>
+      <circle cx="-2"   cy="-2.4" r=".9"/><circle cx="2.4"  cy="-1.2" r=".85"/>
+      <circle cx="1.2"  cy="2.6"  r=".9"/><circle cx="-2.4" cy="1.6"  r=".8"/>
+    </g>
+  </g>
+</symbol>
+ 
+<!-- ============ FLOR 2: beige/champaña, tipo rosa-ranúnculo (más cerrada) ============ -->
+<symbol id="flor2" viewBox="-50 -50 100 100">
+  <g filter="url(#fGrano)">
+    <g filter="url(#fOrganico)">
+      <g filter="url(#fSombraCapa)">
+        <use href="#petBeige" transform="rotate(0)   scale(.74)"/>
+        <use href="#petBeige" transform="rotate(36)  scale(.76)"/>
+        <use href="#petBeige" transform="rotate(72)  scale(.73)"/>
+        <use href="#petBeige" transform="rotate(108) scale(.76)"/>
+        <use href="#petBeige" transform="rotate(144) scale(.74)"/>
+        <use href="#petBeige" transform="rotate(180) scale(.76)"/>
+        <use href="#petBeige" transform="rotate(216) scale(.73)"/>
+        <use href="#petBeige" transform="rotate(252) scale(.76)"/>
+        <use href="#petBeige" transform="rotate(288) scale(.74)"/>
+        <use href="#petBeige" transform="rotate(324) scale(.76)"/>
+      </g>
+      <g filter="url(#fSombraCapa)">
+        <use href="#petBeige" transform="rotate(18)  scale(.6)"/>
+        <use href="#petBeige" transform="rotate(63)  scale(.62)"/>
+        <use href="#petBeige" transform="rotate(108) scale(.6)"/>
+        <use href="#petBeige" transform="rotate(153) scale(.62)"/>
+        <use href="#petBeige" transform="rotate(198) scale(.6)"/>
+        <use href="#petBeige" transform="rotate(243) scale(.62)"/>
+        <use href="#petBeige" transform="rotate(288) scale(.6)"/>
+        <use href="#petBeige" transform="rotate(333) scale(.62)"/>
+      </g>
+      <g filter="url(#fSombraCapa)">
+        <use href="#petBeige" transform="rotate(8)   scale(.46)"/>
+        <use href="#petBeige" transform="rotate(68)  scale(.47)"/>
+        <use href="#petBeige" transform="rotate(128) scale(.45)"/>
+        <use href="#petBeige" transform="rotate(188) scale(.47)"/>
+        <use href="#petBeige" transform="rotate(248) scale(.46)"/>
+        <use href="#petBeige" transform="rotate(308) scale(.47)"/>
+      </g>
+      <g filter="url(#fSombraCapa)">
+        <use href="#petBeige" transform="rotate(30)  scale(.3)"/>
+        <use href="#petBeige" transform="rotate(120) scale(.3)"/>
+        <use href="#petBeige" transform="rotate(210) scale(.3)"/>
+        <use href="#petBeige" transform="rotate(300) scale(.3)"/>
+      </g>
+    </g>
+    <!-- capullo central en espiral -->
+    <circle r="7" fill="url(#gCorazon)" stroke="#a88a58" stroke-width=".4" stroke-opacity=".5"/>
+    <path d="M-4 1 C-4 -5 3 -6 4 -1 C5 4 -2 6 -3 2 C-3.5 0 -1 -1.5 0 0"
+          fill="none" stroke="#8c7144" stroke-width=".7" stroke-opacity=".55" stroke-linecap="round"/>
+  </g>
+</symbol>
+ 
+<!-- ============ HOJA: asimétrica, dos tonos, nervaduras reales ============ -->
+<symbol id="hoja" viewBox="0 0 40 100">
+  <!-- sombra proyectada -->
+  <path d="M21 98C3 72 1 32 22 3c17 27 19 69 -1 95z" fill="#2b3f27" opacity=".18" transform="translate(1.2 1.6)"/>
+  <!-- cuerpo -->
+  <path d="M20 98C2 72 0 30 20 2c19 27 20 70 0 96z" fill="url(#gHojaA)" stroke="#4a6342" stroke-width=".8"/>
+  <!-- oscurecimiento hacia la base -->
+  <path d="M20 98C2 72 0 30 20 2c19 27 20 70 0 96z" fill="url(#gHojaB)"/>
+  <!-- nervadura central -->
+  <path d="M20 96C20.6 70 20.4 40 20 8" fill="none" stroke="#dfe6cf" stroke-width="1.1" opacity=".85" stroke-linecap="round"/>
+  <!-- nervaduras laterales -->
+  <g fill="none" stroke="#dfe6cf" stroke-width=".6" opacity=".55" stroke-linecap="round">
+    <path d="M20 84C14 80 9 74 6 66"/><path d="M20 84C26 80 31 74 34 66"/>
+    <path d="M20 68C13 64 8 57 6 49"/><path d="M20 68C27 64 32 57 34 49"/>
+    <path d="M20 52C14 48 10 41 9 34"/><path d="M20 52C26 48 30 41 31 34"/>
+    <path d="M20 37C16 33 13 28 13 22"/><path d="M20 37C24 33 27 28 27 22"/>
+  </g>
+  <!-- brillo en el lado claro -->
+  <path d="M12 60C8 42 11 24 18 10" fill="none" stroke="#fff" stroke-width="2" opacity=".14" stroke-linecap="round"/>
+</symbol>
+ 
+<!-- ============ BAYA / FLOR PEQUEÑA DE RELLENO (tipo gypsophila) ============ -->
+<symbol id="baya" viewBox="-10 -10 20 20">
+  <circle r="6" fill="url(#gBaya)" stroke="#bfa779" stroke-width=".4" filter="url(#fSombraCapa)"/>
+  <circle r="1.4" fill="#c49a4b" opacity=".8"/>
+</symbol>
+ 
+<!-- ============ RAMO: mismo viewBox 200x200 que el original ============ -->
+<symbol id="ramo" viewBox="0 0 200 200">
+  <!-- ramitas finas de relleno -->
+  <g fill="none" stroke="#6f8561" stroke-width="1.1" stroke-linecap="round" opacity=".85">
+    <path d="M100 110 C70 80 44 70 24 78"/>
+    <path d="M100 110 C120 70 140 50 164 46"/>
+    <path d="M100 110 C150 118 172 136 180 160"/>
+  </g>
+  <!-- hojas (ya con apariencia real) -->
+  <use href="#hoja" x="6"   y="60"  width="34" height="85" transform="rotate(-50 23 100)"/>
+  <use href="#hoja" x="70"  y="2"   width="34" height="85" transform="rotate(30 87 44)"/>
+  <use href="#hoja" x="120" y="100" width="34" height="85" transform="rotate(95 137 142)"/>
+  <use href="#hoja" x="30"  y="125" width="30" height="75" transform="rotate(-120 45 160)"/>
+  <use href="#hoja" x="140" y="30"  width="26" height="64" transform="rotate(62 153 62)"/>
+  <!-- bayitas -->
+  <use href="#baya" x="18"  y="70"  width="9"  height="9"/>
+  <use href="#baya" x="30"  y="58"  width="7"  height="7"/>
+  <use href="#baya" x="158" y="38"  width="9"  height="9"/>
+  <use href="#baya" x="170" y="52"  width="7"  height="7"/>
+  <use href="#baya" x="176" y="152" width="9"  height="9"/>
+  <use href="#baya" x="168" y="142" width="7"  height="7"/>
+  <!-- flores -->
+  <use href="#flor"  x="14"  y="18" width="104" height="104"/>
+  <use href="#flor2" x="82"  y="82" width="84"  height="84"/>
+  <use href="#flor"  x="104" y="20" width="52"  height="52"/>
+  <symbol id="i-iglesia" viewBox="0 0 48 48"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M24 3v9M21 6h6M14 25l10-13 10 13M14 25v17h20V25M20 42V33a4 4 0 0 1 8 0v9M7 42h34"/></g></symbol>
+  <symbol id="i-camara" viewBox="0 0 48 48"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15h9l3-4h12l3 4h9v26H6z"/><circle cx="24" cy="27" r="8"/></g></symbol>
+  <symbol id="i-copas" viewBox="0 0 48 48"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5h18c0 11-4 17-9 17s-9-6-9-17zM24 22v17M15 43h18"/></g></symbol>
+  <symbol id="i-corazon" viewBox="0 0 48 48"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M24 41S6 29 6 18a9 9 0 0 1 18-2 9 9 0 0 1 18 2c0 11-18 23-18 23z"/></g></symbol>
+  <symbol id="i-brindis" viewBox="0 0 48 48"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8h13c0 8-2 13-6.5 13S8 16 8 8zM14.5 21v14M8 39h13M27 8h13c0 8-2 13-6.5 13S27 16 27 8zM33.5 21v14M27 39h13"/></g></symbol>
+  <symbol id="i-anillos" viewBox="0 0 48 48"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="28" r="10"/><circle cx="30" cy="28" r="10"/><path d="M24 4l3.5 4.5L24 13l-3.5-4.5z"/></g></symbol>
+  <symbol id="i-pastel" viewBox="0 0 48 48"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 42h34M10 42V31h28v11M14 31v-8h20v8M19 23v-8h10v8M24 15v-5"/><circle cx="24" cy="7" r="2"/></g></symbol>
+  <symbol id="i-nota" viewBox="0 0 48 48"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 36V10l20-4v26"/><circle cx="13" cy="36" r="5"/><circle cx="33" cy="32" r="5"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 48 48"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M24 45S9 29 9 18a15 15 0 0 1 30 0c0 11-15 27-15 27z"/><circle cx="24" cy="18" r="5"/></g></symbol>
+  <symbol id="i-traje" viewBox="0 0 48 48"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5l8 14 8-14 9 6-3 12v20H10V23L7 11z"/><path d="M24 19v26M20 5l4 6 4-6"/></g></symbol>
+  <symbol id="i-vestido" viewBox="0 0 48 48"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 4l-3 14 4 5h8l4-5-3-14M20 23L7 44h34L28 23M20 23h8"/></g></symbol>
+</symbol>
+  </defs>
+</svg>
+
+<div class="app papel">
+
+  <!-- PORTADA -->
+  <section id="portada" class="screen">
+    <svg class="esq tl" viewBox="0 0 200 200"><use href="#ramo"/></svg>
+    <svg class="esq br" viewBox="0 0 200 200"><use href="#ramo"/></svg>
+    <p class="mayus">Estás cordialmente invitado<br>a la boda de</p>
+    <h1 class="nombres">Deinner &amp; Lehidy </h1>
+
+    <button class="sobre" id="sobre" aria-label="Abrir invitación">
+      <i class="s-fondo"></i><i class="s-carta"></i><i class="s-frente"></i><i class="s-solapa"></i>
+      <svg class="clic" viewBox="0 0 120 40" aria-hidden="true"><path id="arco" d="M12 36 A80 80 0 0 1 108 36" fill="none"/><text text-anchor="middle"><textPath href="#arco" startOffset="50%">CLIC AQUÍ</textPath></text></svg>
+      <svg class="sobre-flor" viewBox="0 0 200 200" aria-hidden="true"><use href="#ramo"/></svg>
+      <span class="sello"></span>
+    </button>
+
+    <p class="invitado" id="invitado">Queridos Amigos</p>
+    <p class="reserva mayus">Hemos reservado<b id="lugares">1</b><span id="lugtxt">lugar</span> en tu honor</p>
+  </section>
+
+  <!-- TARJETA -->
+  <section id="tarjeta" class="screen hidden">
+    <div class="col">
+      <div class="sobre-top rv" style="--i:0">
+        <div class="base"></div>
+        <svg class="flor-izq" viewBox="0 0 200 200"><use href="#ramo"/></svg>
+        <div class="polaroid"><img class="foto" src="fotos/fotoPrincipal.jpeg" alt="Deinner y Lehidy juntos" loading="eager"></div>
+        <svg class="flor-der" viewBox="0 0 200 200"><use href="#ramo"/></svg>
+      </div>
+      <div class="sello-mini rv" style="--i:1"></div>
+
+      <div class="ovalo rv" style="--i:1">
+        <p class="mayus">Tenemos el honor de<br>invitarte a nuestra boda</p>
+        <h2 class="nombres">Deinner Niño</h2>
+        <p class="nombres amp">&amp;</p>
+        <h2 class="nombres">Lehidy Barco</h2>
+        <p class="versiculo">“Así que ya no son dos, sino una sola carne. Por tanto, lo que Dios ha unido, que no lo separe nadie”<br>Mateo 19:6</p>
+        <svg class="ramo" viewBox="0 0 200 200"><use href="#ramo"/></svg>
+      </div>
+
+      <p class="texto rv" style="--i:3">Dios hizo posible que nos encontráramos y decidió unirnos. Hoy celebramos el comienzo de nuestra vida juntos y queremos compartirlo contigo.</p>
+      <div class="musica rv" style="--i:7">
+        <p class="mayus">Presiona para escuchar<br>nuestra canción</p>
+        <div class="player">
+          <div class="ctrl">
+            <button id="repetir" aria-label="Repetir"><svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg></button>
+            <button id="atras" aria-label="Volver al inicio"><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zM9.5 12l8.5 6V6z"/></svg></button>
+            <button id="play" class="play" aria-label="Reproducir"><svg viewBox="0 0 24 24" id="ico"><path d="M8 5v14l11-7z"/></svg></button>
+            <button id="adelante" aria-label="Adelantar 15 segundos"><svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg></button>
+            <button id="mezclar" aria-label="Aleatorio"><svg viewBox="0 0 24 24"><path d="M10.6 9.2L5.4 4 4 5.4l5.2 5.2 1.4-1.4zM14.5 4l2.0 2-12.5 12.6 1.4 1.4L18 7.5l2 2V4h-5.5zm.3 10.8l-1.4 1.4 2.6 2.6-2 2H20v-5.5l-2 2-3.2-2.5z"/></svg></button>
+          </div>
+          <div class="barra" id="barra"><span id="prog"></span></div>
+        </div>
+      </div>
+      <!-- FOTO 2: coloca tu imagen en fotos/foto-2.jpg -->
+      <figure class="foto-momento foto-rasgada rv" style="--i:2">
+        <img src="fotos/foto2.jpeg" alt="Un recuerdo especial de los novios" loading="lazy">
+        <figcaption>Un amor, una promesa, una vida juntos</figcaption>
+      </figure>
+
+      <section class="sec rv" style="--i:0">
+        <h3 class="nombres tit">Reserva la fecha</h3>
+        <div class="cal">
+          <svg class="cal-flor" viewBox="0 0 200 200" aria-hidden="true"><use href="#ramo"/></svg>
+          <h4 class="mayus" id="calMes"></h4>
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+      </section>
+
+      <div class="cuenta rv" style="--i:5" id="cuenta" aria-label="Cuenta regresiva"></div>
+
+      <!-- FOTO 3: coloca tu imagen en fotos/foto-3.jpg -->
+      <figure class="foto-momento foto-momento--apaisada rv" style="--i:2">
+        <img src="fotos/foto3.jpeg" alt="Otro momento especial de los novios" loading="lazy">
+        <figcaption>El inicio de nuestra historia para siempre</figcaption>
+      </figure>
+
+      <section class="sec rv" style="--i:0">
+        <h3 class="nombres tit">Itinerario</h3>
+        <div class="iti" id="iti"></div>
+      </section>
+
+      <section class="sec rv" style="--i:0">
+        <svg class="pin" viewBox="0 0 48 48" aria-hidden="true"><use href="#i-pin"/></svg>
+        <h3 class="nombres tit">Ubicación</h3>
+        <div class="lug" id="lug"></div>
+        <a class="btn lleno" id="mapa" href="#" target="_blank" rel="noopener">VER MAPA</a>
+      </section>
+
+      <!-- FOTO 4: coloca tu imagen en fotos/foto-4.jpg -->
+      <figure class="foto-momento foto-momento--vertical rv" style="--i:2">
+        <img src="fotos/foto4.jpeg" alt="Retrato de los novios" loading="lazy">
+      </figure>
+
+      <section class="sec rv" style="--i:0">
+        <div class="dress">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5l8 14 8-14 9 6-3 12v20H10V23L7 11z"/><path d="M24 19v26M20 5l4 6 4-6"/></g></svg>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 4l-3 14 4 5h8l4-5-3-14M20 23L7 44h34L28 23M20 23h8"/></g></svg>
+        </div>
+        <h3 class="nombres tit">Código de Vestimenta</h3>
+        <p class="texto" id="dressTxt"></p>
+      </section>
+
+      <section class="sec rv regalo" style="--i:0">
+        <div class="regalo-card">
+          <svg class="regalo-ico" viewBox="0 0 48 48" aria-hidden="true">
+            <g fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="18" width="36" height="9" rx="1.5"/>
+              <path d="M9 27v15h30V27M24 18v24"/>
+              <path d="M24 18c-3-8-12-9-12-4 0 3 6 4 12 4zM24 18c3-8 12-9 12-4 0 3-6 4-12 4z"/>
+            </g>
+          </svg>
+          <h3 class="regalo-tit">Regalo</h3>
+          <p class="regalo-txt">Tu presencia en nuestra boda es el mejor regalo. Si deseas hacernos un obsequio, un aporte en efectivo sería muy apreciado por nosotros.</p>
+          <p class="regalo-txt">Durante la recepción tendremos un buzón de lluvia de sobres en una mesa especial, donde podrás depositar el tuyo.</p>
+        </div>
+      </section>
+      <section class="sec rv" style="--i:0">
+        <h3 class="nombres tit">Recomendaciones</h3>
+
+        <p class="texto reco-intro">Si bien amamos a los niños, este es un evento solo para adultos. Para mantener un ambiente tranquilo y cómodo durante la ceremonia y la recepción, te agradecemos no traer niños. Les agradecemos su comprensión.</p>
+
+        <ul class="reco">
+          <li>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="4" width="20" height="40" rx="4"/><path d="M21 8h6M22 39h4"/><path d="M6 18c-2 4-2 8 0 12M42 18c2 4 2 8 0 12M10 21c-1 2-1 4 0 6M38 21c1 2 1 4 0 6"/></g></svg>
+            <p>Usa el celular en modo vibración para no interrumpir la ceremonia.</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M24 11v13l9 5"/><path d="M24 7v2M24 39v2M7 24h2M39 24h2"/></g></svg>
+            <p>Llega a las <b>3:30 p. m.</b> para tener tiempo de acomodarte en orden antes de la ceremonia.</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#b8914a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 32v-7l4-9c.6-1.4 2-2 3.4-2h21.2c1.4 0 2.8.6 3.4 2l4 9v7"/><path d="M5 32h38v5H5zM10 37v3M38 37v3"/><path d="M10 25h28"/><circle cx="12" cy="30" r="1.2"/><circle cx="36" cy="30" r="1.2"/></g></svg>
+            <p>Dentro de la finca hay un gran espacio de estacionamiento, con vigilancia, donde puedes dejar tu vehículo.</p>
+          </li>
+        </ul>
+      </section>
+
+      <a class="sobre-rsvp rv" style="--i:6" id="confirmar" href="#" target="_blank" rel="noopener" aria-label="Confirmar asistencia">
+        <i class="sr-fondo"></i><i class="sr-frente"></i><i class="sr-solapa"></i>
+        <span class="sr-sello"></span>
+        <span class="sr-txt">CONFIRMAR ASISTENCIA</span>
+        <svg class="sr-flor sr-flor-a" viewBox="0 0 200 200" aria-hidden="true"><use href="#ramo"/></svg>
+        <svg class="sr-flor sr-flor-b" viewBox="0 0 200 200" aria-hidden="true"><use href="#ramo"/></svg>
+      </a>
+      <button class="btn rv" style="--i:6" id="cal" type="button">AGREGAR AL CALENDARIO</button>
+
+      
+    </div>
+  </section>
+
+  <!-- Coloca tu canción como musica.mp3 junto a este archivo -->
+  <canvas id="polvo" aria-hidden="true"></canvas>
+  <button class="fab" id="fab" aria-label="Música"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg></button>
+  <!-- CONFIRMACIÓN DE ASISTENCIA -->
+<div class="rsvp" id="rsvp" role="dialog" aria-modal="true" aria-labelledby="rsvpTit" aria-hidden="true">
+  <form class="rsvp-card" id="rsvpForm" novalidate>
+    <button type="button" class="rsvp-x" id="rsvpCerrar" aria-label="Cerrar">&times;</button>
+    <h3 class="nombres" id="rsvpTit">Confirmar asistencia</h3>
+
+    <label class="rsvp-lbl" for="rsvpNombre">Nombre y apellido</label>
+    <input class="rsvp-input" id="rsvpNombre" type="text" autocomplete="name" placeholder="Escribe tu nombre completo" required>
+
+    <fieldset class="rsvp-grupo">
+      <legend class="rsvp-lbl">¿Asistirás a la boda?</legend>
+      <label class="op"><input type="radio" name="asiste" value="Sí asistiré"><span>Sí asistiré</span></label>
+      <label class="op"><input type="radio" name="asiste" value="No asistiré"><span>No asistiré</span></label>
+    </fieldset>
+
+    <fieldset class="rsvp-grupo" id="grupoPersonas">
+      <legend class="rsvp-lbl">¿Cuántas personas asistirán?</legend>
+      <label class="op"><input type="radio" name="personas" value="Solo yo"><span>Solo yo</span></label>
+      <label class="op" id="opPareja"><input type="radio" name="personas" value="Yo y mi pareja"><span>Yo y mi pareja</span></label>
+    </fieldset>
+
+    <p class="rsvp-error" id="rsvpError" role="alert"></p>
+    <button type="submit" class="btn lleno rsvp-enviar">ENVIAR POR WHATSAPP</button>
+  </form>
+</div>
+  <audio id="audio" src="./music/Perfect.mp3" preload="auto"></audio>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

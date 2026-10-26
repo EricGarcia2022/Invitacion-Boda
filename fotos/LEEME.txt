@@ -1,0 +1,11 @@
+FOTOS DE LA INVITACIÓN
+
+Copia aquí las fotos de los novios usando estos nombres exactos:
+1. foto-principal.jpg  - foto principal del recuadro tipo Polaroid.
+2. foto-2.jpg           - retrato vertical entre secciones.
+3. foto-3.jpg           - foto horizontal después de la cuenta regresiva.
+4. foto-4.jpg           - retrato vertical antes de Dress Code.
+
+Los recuadros ahora son más altos y las imágenes usan object-fit: contain para mostrar la foto completa sin recortar personas ni partes importantes. Si la proporción de la foto no coincide con el marco, pueden quedar franjas beige a los lados o arriba/abajo; esto es intencional para no cortar la imagen.
+
+Conserva la extensión .jpg. Si usas PNG o WEBP, cambia la extensión correspondiente en index.html.
