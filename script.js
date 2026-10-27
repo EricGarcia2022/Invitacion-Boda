@@ -120,7 +120,7 @@ cuenta(); setInterval(cuenta, 1000);
 /* ---- Confirmación de asistencia por WhatsApp ---- */
 (function(){
   // 👉 PEGA AQUÍ la URL de Apps Script que termina en /exec
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxnWXV5nbCwQQI6hf7fu_Q9X_pg6oub1AwTrETSLMiWsYDGrfByKdMNeXKULjOcXdOWpQ/exec';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzf8JvuAP1sFkNoYXEeYOuTBKvbsMatcp3dyIfGpjxNwgeIIhRjdCobameQcewZNgoAGw/exec';
 
   var btn = document.getElementById('confirmar');
   var modal = document.getElementById('rsvp');
