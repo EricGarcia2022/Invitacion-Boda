@@ -119,8 +119,8 @@ cuenta(); setInterval(cuenta, 1000);
 
 /* ---- Confirmación de asistencia por WhatsApp ---- */
 (function(){
-  // ⚠️ CAMBIA ESTE NÚMERO: código de país + número, sin + ni espacios (Colombia = 57)
-  var WA_NUMERO = '573196487838';
+  // 👉 PEGA AQUÍ la URL de Apps Script que termina en /exec
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmSs56hTrP5oncX8Sh7Mp0lVnTSK9EAU1MLen8luroO5gC14dpHYX_way4NWt_m1fycg/exec';
 
   var btn = document.getElementById('confirmar');
   var modal = document.getElementById('rsvp');
@@ -137,7 +137,6 @@ cuenta(); setInterval(cuenta, 1000);
   }
 
   function abrir(){
-    // Si el invitado tiene solo 1 lugar reservado, oculta "Yo y mi pareja"
     var lug = parseInt((document.getElementById('lugares')||{}).textContent, 10) || 2;
     opPareja.hidden = lug < 2;
     modal.classList.add('abierto');
@@ -150,7 +149,6 @@ cuenta(); setInterval(cuenta, 1000);
     btn.focus();
   }
 
-  // capture=true para ganar sobre cualquier href que ponga el script anterior
   btn.addEventListener('click', function(e){ e.preventDefault(); e.stopImmediatePropagation(); abrir(); }, true);
   document.getElementById('rsvpCerrar').addEventListener('click', cerrar);
   modal.addEventListener('click', function(e){ if(e.target === modal) cerrar(); });
@@ -169,18 +167,39 @@ cuenta(); setInterval(cuenta, 1000);
     var n = nombre.value.trim();
     var asiste = val('asiste');
     var personas = val('personas');
+    var enviar = form.querySelector('.rsvp-enviar');
 
+    error.classList.remove('rsvp-ok');
     if(n.length < 3){ error.textContent = 'Escribe tu nombre y apellido.'; nombre.focus(); return; }
     if(!asiste){ error.textContent = 'Indica si asistirás a la boda.'; return; }
     if(asiste === 'Sí asistiré' && !personas){ error.textContent = 'Indica cuántas personas asistirán.'; return; }
 
-    var msg = 'Hola, soy ' + n + '.\n' +
-              'Confirmación de asistencia a la boda de Deinner & Lehidy 💍\n\n' +
-              '¿Asistirás a la boda? ' + asiste + '\n' +
-              (asiste === 'Sí asistiré' ? '¿Cuántas personas asistirán? ' + personas : '');
+    enviar.disabled = true;
+    enviar.textContent = 'ENVIANDO...';
 
-    window.open('https://wa.me/' + WA_NUMERO + '?text=' + encodeURIComponent(msg.trim()), '_blank', 'noopener');
-    cerrar();
+    var datos = new URLSearchParams({ nombre: n, asiste: asiste, personas: personas });
+
+    fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: datos })
+      .then(function(){
+        error.classList.add('rsvp-ok');
+        error.textContent = asiste === 'Sí asistiré'
+          ? '¡Gracias, ' + n.split(' ')[0] + '! Tu confirmación fue enviada 💛'
+          : 'Gracias por avisarnos. ¡Te tendremos presente! 💛';
+        form.reset();
+        grupoPersonas.hidden = false;
+        setTimeout(function(){
+          cerrar();
+          error.textContent = '';
+          error.classList.remove('rsvp-ok');
+          enviar.disabled = false;
+          enviar.textContent = 'ENVIAR CONFIRMACIÓN';
+        }, 2200);
+      })
+      .catch(function(){
+        error.textContent = 'No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.';
+        enviar.disabled = false;
+        enviar.textContent = 'ENVIAR CONFIRMACIÓN';
+      });
   });
 })();
 
