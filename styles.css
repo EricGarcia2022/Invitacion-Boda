@@ -526,3 +526,6 @@ body{background:#d8d0c0;font-family:var(--serif);color:var(--texto);display:flex
 .sobre-rsvp:active .sr-txt{transform:translateX(-50%) translateY(-2px) scale(1.04)}
 #cal:active{background:var(--oro);color:#fff;transform:translateY(-2px)}
 #cal{transition:background .25s,color .25s,transform .2s}
+
+.rsvp-error.rsvp-ok{color:#6b7f4f;font-weight:600}
+.rsvp-enviar:disabled{opacity:.7;cursor:wait}
